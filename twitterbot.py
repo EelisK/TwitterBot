@@ -10,3 +10,4 @@ api = twitter.Api(consumer_key=consumer_key,
 
 def post(post):
     api.PostUpdate(status="{}\n{}".format(post.title, post.url), media=post.url)
+    print(post.url)

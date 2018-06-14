@@ -13,8 +13,8 @@ def main(n):
 if len(sys.argv) > 1:
     update_rate = int(sys.argv[1])
 else:
-    # Default is every hour
-    update_rate = 6000
+    # Default is every half an hour
+    update_rate = 1800
 
 # At least 10 seconds update rate so that there will be
 # enough time to finish the previous fetching and posting
