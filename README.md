@@ -27,12 +27,18 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-<h3>Start posting</h3>
+<h3>Initialize your bot</h3>
 
-<p>Run the script. You can provide an interval as 
-an additional parameter. This will be the interval your bot uses to update your twitter account.
-Interval is given in seconds, the default being 1800 (30 minutes).</p>
+<p>Select the subreddit you want to retrieve posts from and initialize your bot account</p>
 
 ```sh
-python3 main.py [interval]
+python3 main.py init <your-subreddit>
+```
+
+<h3>Start posting</h3>
+
+<p>Run the script. As parameters you should provide the subreddit your bot posts from, and an additional interval parameter your bot uses between the posts. Interval is given in seconds, and it has a default value of 1800 (30 minutes).</p>
+
+```sh
+python3 main.py <subreddit> [<interval>]
 ```
