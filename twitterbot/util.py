@@ -2,11 +2,11 @@ import threading
 import datetime
 import sys
 import os
-import twitterbot
-from database import Post, engine
+import twitterbot.twitterbot as bot
+from twitterbot.database import Post, engine
 from sqlalchemy.orm import sessionmaker
 from urllib import request
-from reddit import reddit
+from twitterbot.reddit import reddit
 
 
 Session = sessionmaker(bind=engine)
@@ -44,7 +44,7 @@ def update(subreddit):
         session.add(post)
         session.commit()
         session.close()
-        twitterbot.post(top_post)
+        bot.post(top_post)
     else:
         sys.stderr.write("No new posts\n")
 
@@ -58,6 +58,6 @@ def init_profile(sub):
     icon_url = reddit.subreddit(sub).icon_img
     tmp_file = "tmp.{}".format(icon_url.split(".")[-1])
     request.urlretrieve(icon_url, tmp_file)
-    twitterbot.set_profile_pic(tmp_file)
+    bot.set_profile_pic(tmp_file)
     os.remove(tmp_file)
     print("Profile pic set to {}".format(icon_url))

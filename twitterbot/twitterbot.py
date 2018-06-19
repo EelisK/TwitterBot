@@ -13,7 +13,7 @@ def post(post):
     api.PostUpdate(status="{}\n{}".format(post.title,
                                           "reddit.com{}".format(post.permalink)),
                    media=post.url)
-    print("{:30} {:30} {:30}".format(strftime("%Y-%m-%d %H:%M:%S", gmtime()), post.title, post.url))
+    print("{:50} {:50} {:50}".format(strftime("%Y-%m-%d %H:%M:%S", gmtime()), post.title, post.url))
 
 
 def set_profile_pic(url):

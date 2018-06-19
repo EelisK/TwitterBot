@@ -1,5 +1,5 @@
 #!./venv/bin/python3
-from util import set_interval, update, init_profile
+from twitterbot.util import set_interval, update, init_profile
 import sys
 
 
