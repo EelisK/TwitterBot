@@ -30,6 +30,7 @@ def in_database(post, session=Session()):
 
 def update(subreddit):
     limit = {"l": 30}
+    session = Session()
     def inner():
         hours_ago = datetime.datetime.utcnow() - datetime.timedelta(hours=24)
         # Top posts today
@@ -37,7 +38,6 @@ def update(subreddit):
             post for post in reddit.subreddit(subreddit).hot(limit=limit["l"])
             if datetime.datetime.utcfromtimestamp(post.created_utc) >= hours_ago
         ]
-        session = Session()
         # Select posts that are not in the database already
         new_posts = list(filter(lambda post: all(map(lambda p: p.id != post.id, session.query(Post).all())), new_posts))
         if len(new_posts) > 0:
